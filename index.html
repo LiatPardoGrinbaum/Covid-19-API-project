@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Covid-19 API</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="top">
+        <h1>Coronavirus World Statistics</h1>
+        <div class="spinner"></div>
+        <div class="countries-container">
+          <button class="btn1" name="world">world</button>
+          <button class="btn1" name="africa">africa</button>
+          <button class="btn1" name="world"></button>
+          <button class="btn1" name="world"></button>
+          <button class="btn1" name="world"></button>
+        </div>
+        <div id="select-box">
+          <select>
+            <option value="allCountries" selected>All Countries</option>
+          </select>
+        </div>
+        <div class="worldStatistics">
+          <button class="btn2" id="confirmed">confirmed</button>
+          <button class="btn2" id="recovered">recovered</button>
+          <button class="btn2" id="critical">critical</button>
+          <button class="btn2" id="deaths">deaths</button>
+        </div>
+        <div class="countryData"></div>
+        <!-- add divs in js for all details or here? -->
+      </div>
+
+      <div class="chart">
+        <canvas id="myChart" width="600" height="180"></canvas>
+      </div>
+    </div>
+
+    <script src="./chart.js"></script>
+  </body>
+</html>
