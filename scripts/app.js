@@ -13,18 +13,27 @@ async function countriesStatus() {
     select.innerHTML = "";
     const name = e.target.name;
 
+    const countriesOfcontinents = continentsObj[name];
     const dataYfilterd = covidCountries.data.filter((country) => {
-      if (dataX.includes(country.name)) {
+      if (countriesOfcontinents.includes(country.name)) {
         return country;
       }
     });
 
-    const dataX = continentsObj[name];
     let covidCase = "Covid-19 confirmed";
     const dataYObj = sortCountries(dataYfilterd); //sort alphabetical by name
-    const dataY = dataYObj;
 
+    const dataConfirmedY = [];
+    const dataX = [];
+
+    dataYObj.forEach((country) => {
+      dataConfirmedY.push(country.latest_data.confirmed); //confirmed cases for y axis
+      dataX.push(country.name); //countries for x axis compared to countries from covid api
+    });
+
+    drawChart(dataX, covidCase, dataConfirmedY);
     createOptions(dataX); //create countries options elements in select bar
+    // drawChart(dataX, covidCase, dataConfirmedY);
   });
   // const countryFilterd=covidCountries.filter((country)=>{
   //   continentsObj[name].includes(country)
@@ -76,3 +85,6 @@ function getConfirmCases(arr) {
 
   return confirmed;
 }
+
+// if (dataY[i].indexOf[dataX] !== -1) {
+// }

@@ -41,6 +41,7 @@ h1 {
   width: 70px;
   height: 35px;
   padding: 5px;
+  background: rgb(30, 89, 179);
   background: rgb(116, 140, 140);
   font-size: 16px;
   border-radius: 5px;
@@ -74,6 +75,9 @@ select {
 }
 
 .chart {
-  margin-top: 20px;
+  background: rgba(191, 242, 247, 0.5);
+  margin: 20px 0px;
+  padding: 3px;
   width: 90%;
+  border-radius: 10px;
 }
