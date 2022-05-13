@@ -14,15 +14,16 @@
         <h1>Coronavirus World Statistics</h1>
         <div class="spinner"></div>
         <div class="countries-container">
-          <!-- <button class="btn1" name="world">world</button>
-          <button class="btn1" name="africa">africa</button>
-          <button class="btn1" name="world"></button>
-          <button class="btn1" name="world"></button>
-          <button class="btn1" name="world"></button> -->
+          <button class="btn1" name="world">World</button>
+          <button class="btn1" name="Asia">Asia</button>
+          <button class="btn1" name="Europe">Europe</button>
+          <button class="btn1" name="Africa">Africa</button>
+          <button class="btn1" name="Oceania">Oceania</button>
+          <button class="btn1" name="Americas">Americas</button>
         </div>
         <div id="select-box">
-          <select>
-            <option value="allCountries" selected>All Countries</option>
+          <select class="select">
+            <option value="allCountries" selected>Choose continent and select country</option>
           </select>
         </div>
         <div class="worldStatistics">
@@ -40,7 +41,7 @@
       </div>
     </div>
 
-    <script src="./chart.js"></script>
-    <script src="./app.js"></script>
+    <script src="/scripts/chart.js" defer type="module"></script>
+    <script src="/scripts/app.js" defer type="module"></script>
   </body>
 </html>
