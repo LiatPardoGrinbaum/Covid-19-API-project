@@ -49,7 +49,6 @@ async function getContinentsObj(continentsArray) {
     continentsArray.forEach((continent, i) => {
       continentsKeys[continent] = countriesInContinents[i];
     });
-
     return continentsKeys;
   } catch (e) {
     console.log(e);

@@ -13,31 +13,31 @@
       <div class="top">
         <h1>Coronavirus World Statistics</h1>
         <div class="spinner"></div>
-        <div class="countries-container">
-          <button class="btn1" name="world">World</button>
-          <button class="btn1" name="Asia">Asia</button>
-          <button class="btn1" name="Europe">Europe</button>
-          <button class="btn1" name="Africa">Africa</button>
-          <button class="btn1" name="Oceania">Oceania</button>
-          <button class="btn1" name="Americas">Americas</button>
+        <div class="continent-container" name="null">
+          <button class="btn1" name="World" data-isActive="true">World</button>
+          <button class="btn1" name="Asia" data-isActive="false">Asia</button>
+          <button class="btn1" name="Europe" data-isActive="false">Europe</button>
+          <button class="btn1" name="Africa" data-isActive="false">Africa</button>
+          <button class="btn1" name="Oceania" data-isActive="false">Oceania</button>
+          <button class="btn1" name="Americas" data-isActive="false">Americas</button>
         </div>
         <div id="select-box">
           <select class="select">
             <option value="allCountries" selected>Choose continent and select country</option>
           </select>
         </div>
-        <div class="worldStatistics">
-          <button class="btn2" id="confirmed">confirmed</button>
-          <button class="btn2" id="recovered">recovered</button>
-          <button class="btn2" id="critical">critical</button>
-          <button class="btn2" id="deaths">deaths</button>
+        <div class="worldStatistics" name="null">
+          <button class="btn2" name="confirmed" data-isActive="true">confirmed</button>
+          <button class="btn2" name="recovered" data-isActive="false">recovered</button>
+          <button class="btn2" name="critical" data-isActive="false">critical</button>
+          <button class="btn2" name="deaths" data-isActive="false">deaths</button>
         </div>
         <div class="countryData"></div>
         <!-- add divs in js for all details or here? -->
       </div>
 
       <div class="chart">
-        <canvas id="myChart" width="600" height="300"></canvas>
+        <canvas id="myChart" width="600" height="250"></canvas>
       </div>
     </div>
 

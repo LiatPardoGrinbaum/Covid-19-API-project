@@ -27,7 +27,7 @@ h1 {
   text-align: center;
 }
 
-.countries-container,
+.continent-container,
 .worldStatistics {
   width: 100%;
   display: flex;
@@ -38,7 +38,7 @@ h1 {
 
 .btn1 {
   border: none;
-  width: 70px;
+  width: 80px;
   height: 35px;
   padding: 5px;
   background: rgb(30, 89, 179);
@@ -53,7 +53,7 @@ h1 {
   width: 120px;
   height: 35px;
   padding: 5px;
-  background: rgb(200, 98, 87);
+  background: rgb(213, 137, 128);
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
@@ -72,12 +72,22 @@ select {
   background: rgb(116, 140, 140);
   font-size: 16px;
   border-radius: 5px;
+  color: rgb(76, 71, 71);
 }
 
 .chart {
   background: rgba(191, 242, 247, 0.5);
   margin: 20px 0px;
   padding: 3px;
-  width: 90%;
+  width: 80%;
+
   border-radius: 10px;
 }
+
+[data-isActive="true"] {
+  background: rgb(53, 106, 106);
+}
+
+/* [data-isActive2="true"] {
+  background: rgb(205, 76, 76);
+} */
