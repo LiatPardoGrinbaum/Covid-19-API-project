@@ -1,17 +1,20 @@
 import { getCovidCountriesData, getWorldData, getObjectOfContinents } from "./fetch.js";
 import { drawChart } from "./chart.js";
 
+const spinner = document.querySelector(".spinner");
 const contriesBtns = document.querySelector(".continent-container");
 const casesStatistics = document.querySelector(".worldStatistics");
 const select = document.querySelector(".select");
 const dataBox = document.querySelector(".countryData");
+const chart = document.querySelector(".chart");
 const ctx = document.getElementById("myChart");
 
 async function mainButtonsFuncionality() {
   try {
     const covidCountries = await getCovidCountriesData(); //array of all countries!
     const continentsObj = await getObjectOfContinents(getWorldData); //object of continents
-
+    spinner.style.display = "none";
+    chart.style.display = "block";
     //reset page to show world confirmed chart and show all countries options:
     const allWorldCountries = []; //for x axis but next we need to compare to covid countries
     for (let key in continentsObj) {
@@ -85,7 +88,7 @@ async function mainButtonsFuncionality() {
 
 mainButtonsFuncionality();
 
-drawChart([1, 2, 3], "hello", [1, 2, 4]);
+// drawChart([1, 2, 3], "hello", [1, 2, 4]);
 
 function sortCountries(arr) {
   arr.sort(function (a, b) {

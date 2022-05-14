@@ -162,9 +162,20 @@ select {
   margin: 20px 0px;
   padding: 3px;
   width: 80%;
-
+  height: 60vh;
+  display: none;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
+
+/* canvas {
+  max-width: 850px !important;
+  max-height: 400px !important;
+  margin: auto;
+} */
 
 [data-isActive="true"] {
   background: rgb(181, 46, 46);
@@ -173,3 +184,30 @@ select {
 /* [data-isActive2="true"] {
   background: rgb(205, 76, 76);
 } */
+
+.spinner {
+  display: block;
+  animation: load;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.spinner img {
+  height: 80px;
+  text-align: center;
+  animation-name: load;
+  animation-duration: 7s;
+
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes load {
+  from {
+    transform: rotate(-360deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

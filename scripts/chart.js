@@ -8,6 +8,7 @@ export function drawChart(dataX, covidCase, dataY) {
     type: "bar",
     data: {
       labels: dataX,
+
       datasets: [
         {
           label: covidCase,
@@ -20,7 +21,7 @@ export function drawChart(dataX, covidCase, dataY) {
     },
     options: {
       responsive: true,
-      maintainAspectRation: false,
+      maintainAspectRatio: false,
       scales: {
         y: {
           beginAtZero: true,
