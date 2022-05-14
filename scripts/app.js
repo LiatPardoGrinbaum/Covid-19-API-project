@@ -13,6 +13,13 @@ async function mainButtonsFuncionality() {
   try {
     const covidCountries = await getCovidCountriesData(); //array of all countries!
     const continentsObj = await getObjectOfContinents(getWorldData); //object of continents
+    //fix for countries from covid API that arent shown in continents API:
+    continentsObj["Asia"].push("Brunei ", "Korea, Democratic People's Republic of", "S. Korea", "Macao");
+    continentsObj["Europe"].push("UK", "Czechia", "North Macedonia");
+    continentsObj["Americas"].push("USA", "Bonaire, Sint Eustatius and Saba", "U.S. Virgin Islands", "Saint Vincent Grenadines", "Saint Barth", "Saint Pierre Miquelon", "Turks and Caicos");
+    continentsObj["Africa"].push("CAR", "Congo", "DRC", "Sao Tome and Principe");
+    continentsObj["Oceania"].push("Micronesia, Federated States of", "Pitcairn");
+
     spinner.style.display = "none";
     chart.style.backgroundColor = " rgba(191, 242, 247, 0.5)";
     //reset page to show world confirmed chart and show all countries options:
@@ -20,6 +27,7 @@ async function mainButtonsFuncionality() {
     for (let key in continentsObj) {
       allWorldCountries.push(...continentsObj[key]);
     }
+
     setContinentsButtonsConfirmed(allWorldCountries, covidCountries);
 
     contriesBtns.addEventListener("click", function (e) {
@@ -125,6 +133,7 @@ function setContinentsButtonsConfirmed(worldOrContinentsCountries, covidCountrie
       return country;
     }
   });
+
   let covidCase = "Covid-19 confirmed";
   const dataYObj = sortCountries(dataYfiltered);
   const dataConfirmedY = [];
