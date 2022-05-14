@@ -241,6 +241,7 @@ function drawDataBoxButtons(status, dataStatusY) {
   dataBox.appendChild(titleName);
   titleName.textContent = currentBtnName;
   const titleTotal = document.createElement("h3");
+  titleTotal.classList.add("h3Style2");
   dataBox.appendChild(titleTotal);
   titleTotal.textContent = status;
   const totalNumber = document.createElement("p");

@@ -81,7 +81,7 @@ body {
 .divStyle {
   display: flex;
   justify-content: center;
-  align-items: ba;
+  /* align-items: ba; */
   text-align: center;
 }
 .h3Style {
@@ -209,5 +209,71 @@ select {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1100px) {
+  .top-main {
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+  }
+  .top-left-buttons {
+    justify-content: center;
+    width: 100%;
+    height: 150px;
+  }
+
+  .countryData {
+    flex-direction: row;
+    width: 100%;
+    align-items: baseline;
+
+    flex-wrap: wrap;
+    padding: 5px 0px;
+    margin: 0;
+  }
+
+  .countryData h2 {
+    margin-left: 10px;
+    flex: 1;
+    text-align: left;
+  }
+  .countryData p {
+    margin: 0px 10px;
+  }
+  .divStyle {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgb(22, 75, 75);
+  }
+  .pStyle2 {
+    padding: 0px 4px;
+  }
+  .pStyle {
+    padding: 0px 4px;
+  }
+
+  .title h1 {
+    margin-bottom: 15px;
+    margin-top: 30px;
+    font-size: 32px;
+  }
+  .h3Style {
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 720px) {
+  .countryData {
+    align-items: center;
+  }
+  .h3Style2 {
+    margin: 0;
+  }
+  .btn1 {
+    width: 80px;
   }
 }
