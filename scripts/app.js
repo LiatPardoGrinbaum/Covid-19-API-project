@@ -46,32 +46,11 @@ async function mainButtonsFuncionality() {
         }
       });
       dataBox.textContent = "";
-      const title = document.createElement("h3");
-      title.classList.add("h3Style");
-      const confirmDiv = document.createElement("p");
-      confirmDiv.classList.add("pStyle");
-      const confirmNum = document.createElement("p");
-      confirmNum.classList.add("pStyle");
-      dataBox.append(title, confirmDiv, confirmNum);
-
-      title.textContent = currentCountry;
-
-      confirmDiv.textContent = "Total Cases";
-      let sum = currentCountryObj.latest_data.confirmed;
-      function numberWithCommas(sum) {
-        return sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      }
-      confirmNum.textContent = numberWithCommas(sum);
-
-      console.log(currentCountryObj.latest_data.confirmed);
-      console.log(currentCountryObj.latest_data.recovered);
-      console.log(currentCountryObj.latest_data.deaths);
-      console.log(currentCountryObj.latest_data.critical);
-      console.log(currentCountryObj.today.deaths);
-      console.log(currentCountryObj.today.confirmed);
+      drawDataBoxOptions(currentCountryObj, currentCountry);
     });
 
     casesStatistics.addEventListener("click", function (e) {
+      select.innerHTML = "";
       const name = e.target.name;
       const continentBtns = [...contriesBtns.children];
       const worldOrContinentBtn = continentBtns.find((btn) => {
@@ -271,6 +250,47 @@ function drawDataBoxButtons(status, dataStatusY) {
   totalNumber.textContent = sumStr;
 }
 
-function drawDataBoxOptions() {
-  dataBox;
+function drawEachCase(stat, sumStat) {
+  const divWrap = document.createElement("div");
+  divWrap.classList.add("divStyle");
+  const statusDiv = document.createElement("p");
+  statusDiv.classList.add("pStyle");
+  const statusNum = document.createElement("p");
+  statusNum.classList.add("pStyle2");
+
+  divWrap.append(statusDiv, statusNum);
+  dataBox.append(divWrap);
+
+  statusDiv.textContent = stat;
+  let sum = sumStat;
+  function numberWithCommas(sum) {
+    return sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  statusNum.textContent = numberWithCommas(sum);
+}
+
+function drawDataBoxOptions(currentCountryObj, currentCountry) {
+  let sumConfirmed = currentCountryObj.latest_data.confirmed;
+  let sumNewConfirmed = currentCountryObj.today.confirmed;
+  let sumDeaths = currentCountryObj.latest_data.deaths;
+  let sumNewDeaths = currentCountryObj.today.deaths;
+  let sumRecovered = currentCountryObj.latest_data.recovered;
+  let sumCritical = currentCountryObj.latest_data.critical;
+  const title = document.createElement("h3");
+  dataBox.appendChild(title);
+  title.textContent = currentCountry;
+  title.classList.add("h3Style");
+  let statConfirmed = "Total Cases:";
+  let statNewConfirmed = "New Cases:";
+  let statDeaths = "Total Deaths:";
+  let statNewDeaths = "New Deaths:";
+  let statRecovered = "Total Recovered:";
+  let statCritical = "Total Critical:";
+
+  drawEachCase(statConfirmed, sumConfirmed);
+  drawEachCase(statNewConfirmed, sumNewConfirmed);
+  drawEachCase(statDeaths, sumDeaths);
+  drawEachCase(statNewDeaths, sumNewDeaths);
+  drawEachCase(statRecovered, sumRecovered);
+  drawEachCase(statCritical, sumCritical);
 }

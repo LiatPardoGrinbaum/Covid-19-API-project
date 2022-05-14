@@ -20,6 +20,7 @@ export function drawChart(dataX, covidCase, dataY) {
     },
     options: {
       responsive: true,
+      maintainAspectRation: false,
       scales: {
         y: {
           beginAtZero: true,
