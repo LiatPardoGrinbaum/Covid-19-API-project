@@ -69,12 +69,18 @@ body {
   margin-left: 20px;
   font-family: "Alata", sans-serif;
   border-radius: 5px;
+  transition: 0.8s;
 }
 
 .countryData > h2 {
   margin-bottom: 5px;
   margin-top: 0;
   color: rgb(22, 75, 75);
+}
+
+.countryData:hover {
+  transform: scale(1.05);
+  background: rgb(181, 56, 56);
 }
 
 .countryData > p {
@@ -126,18 +132,22 @@ body {
 
 .btn1 {
   background: rgb(116, 140, 140);
+  transition: 0.3s;
 }
 
 .btn2 {
   background: rgb(205, 133, 125);
+  transition: 0.3s;
 }
 
-/* .btn1:hover {
-  background: rgb(79, 165, 165);
+.btn1:hover {
+  font-weight: bold;
+  transform: scale(1.03);
 }
 .btn2:hover {
-  background: rgb(189, 102, 92);
-} */
+  font-weight: bold;
+  transform: scale(1.03);
+}
 
 #select-box {
   width: 100%;
