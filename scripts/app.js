@@ -14,7 +14,7 @@ async function mainButtonsFuncionality() {
     const covidCountries = await getCovidCountriesData(); //array of all countries!
     const continentsObj = await getObjectOfContinents(getWorldData); //object of continents
     spinner.style.display = "none";
-    chart.style.display = "block";
+    chart.style.backgroundColor = " rgba(191, 242, 247, 0.5)";
     //reset page to show world confirmed chart and show all countries options:
     const allWorldCountries = []; //for x axis but next we need to compare to covid countries
     for (let key in continentsObj) {
