@@ -1,4 +1,0 @@
-<html>
- <body>
-  <h1> Coronavirus </h1>
-</html>
