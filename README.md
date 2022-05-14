@@ -24,4 +24,4 @@ I think the most difficult part for me was to understand how to work with both A
 I've studied a lot from this project and had the opportunity to practice and cover many of the main subjects in JavaScript, HTML and CSS I have learned in the last few months.  
 I hope you enjoy viewing data with my API website.
 
-##&copy; Liat Pardo Grinbaum
+&copy; Liat Pardo Grinbaum
