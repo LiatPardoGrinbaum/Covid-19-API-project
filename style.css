@@ -7,7 +7,7 @@ body {
   font-family: "Spectral", serif;
 }
 
-h1 {
+.title h1 {
   color: rgb(22, 75, 75);
   margin: 30px;
   font-size: 40px;
@@ -24,8 +24,10 @@ h1 {
 .top {
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  justify-content: space-between;
   text-align: center;
+  width: 80%;
 }
 
 .top img {
@@ -35,11 +37,47 @@ h1 {
 .title {
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.top-main {
+  display: flex;
+
+  justify-content: center;
+}
+
+.top-left-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 70%;
+  height: 200px;
+}
+
+.countryData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30%;
+  border: 1px black solid;
+  margin-left: 20px;
+}
+
+.countryData > h2 {
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+.countryData > h3,
+p {
+  margin: 0;
 }
 
 .continent-container,
 .worldStatistics {
   width: 100%;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -90,6 +128,11 @@ select {
   font-family: "Spectral", serif;
 }
 
+.countriesData {
+  display: flex;
+  width: 20%;
+  border: 1px solid black;
+}
 .chart {
   background: rgba(191, 242, 247, 0.5);
   margin: 20px 0px;

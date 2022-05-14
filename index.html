@@ -15,29 +15,35 @@
       <div class="top">
         <div class="title">
           <img src="./cherry-428.png" />
+
           <h1>Coronavirus World Statistics</h1>
         </div>
-        <div class="spinner"></div>
-        <div class="continent-container" name="null">
-          <button class="btn btn1" name="World" data-isActive="true">World</button>
-          <button class="btn btn1" name="Asia" data-isActive="false">Asia</button>
-          <button class="btn btn1" name="Europe" data-isActive="false">Europe</button>
-          <button class="btn btn1" name="Africa" data-isActive="false">Africa</button>
-          <button class="btn btn1" name="Oceania" data-isActive="false">Oceania</button>
-          <button class="btn btn1" name="Americas" data-isActive="false">Americas</button>
+        <div class="top-main">
+          <div class="top-left-buttons">
+            <!-- <div class="spinner"></div> -->
+            <div class="continent-container" name="null">
+              <button class="btn btn1" name="World" data-isActive="true">World</button>
+              <button class="btn btn1" name="Asia" data-isActive="false">Asia</button>
+              <button class="btn btn1" name="Europe" data-isActive="false">Europe</button>
+              <button class="btn btn1" name="Africa" data-isActive="false">Africa</button>
+              <button class="btn btn1" name="Oceania" data-isActive="false">Oceania</button>
+              <button class="btn btn1" name="Americas" data-isActive="false">Americas</button>
+            </div>
+            <div id="select-box">
+              <select class="select">
+                <!-- <option value="allCountries" selected>Choose continent and select country</option> -->
+              </select>
+            </div>
+            <div class="worldStatistics" name="null">
+              <button class="btn btn2" name="confirmed" data-isActive="true">Confirmed</button>
+              <button class="btn btn2" name="recovered" data-isActive="false">Recovered</button>
+              <button class="btn btn2" name="critical" data-isActive="false">Critical</button>
+              <button class="btn btn2" name="deaths" data-isActive="false">Deaths</button>
+            </div>
+          </div>
+          <div class="countryData"></div>
         </div>
-        <div id="select-box">
-          <select class="select">
-            <option value="allCountries" selected>Choose continent and select country</option>
-          </select>
-        </div>
-        <div class="worldStatistics" name="null">
-          <button class="btn btn2" name="confirmed" data-isActive="true">Confirmed</button>
-          <button class="btn btn2" name="recovered" data-isActive="false">Recovered</button>
-          <button class="btn btn2" name="critical" data-isActive="false">Critical</button>
-          <button class="btn btn2" name="deaths" data-isActive="false">Deaths</button>
-        </div>
-        <div class="countryData"></div>
+
         <!-- add divs in js for all details or here? -->
       </div>
 

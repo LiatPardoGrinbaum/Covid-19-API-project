@@ -4,24 +4,28 @@ import { drawChart } from "./chart.js";
 const contriesBtns = document.querySelector(".continent-container");
 const casesStatistics = document.querySelector(".worldStatistics");
 const select = document.querySelector(".select");
+const dataBox = document.querySelector(".countryData");
 const ctx = document.getElementById("myChart");
 
 async function mainButtonsFuncionality() {
   try {
     const covidCountries = await getCovidCountriesData(); //array of all countries!
     const continentsObj = await getObjectOfContinents(getWorldData); //object of continents
-    //try to underatand how to get setBtnEvents funtion out
+
+    //reset page to show world confirmed chart and show all countries options:
+    const allWorldCountries = []; //for x axis but next we need to compare to covid countries
+    for (let key in continentsObj) {
+      allWorldCountries.push(...continentsObj[key]);
+    }
+    setContinentsButtonsConfirmed(allWorldCountries, covidCountries);
+
     contriesBtns.addEventListener("click", function (e) {
-      select.innerHTML = "";
+      select.innerHTML = ""; //clear current oprions in select bar
       const name = e.target.name;
       //defalut case- confirmed:
       let confirmed = "confirmed";
       resetActivation(casesStatistics, confirmed);
 
-      const allWorldCountries = []; //for x axis but next we need to compare to covid countries
-      for (let key in continentsObj) {
-        allWorldCountries.push(...continentsObj[key]);
-      }
       if (name === "World") {
         resetActivation(contriesBtns, name);
         setContinentsButtonsConfirmed(allWorldCountries, covidCountries);
@@ -33,12 +37,39 @@ async function mainButtonsFuncionality() {
         setContinentsButtonsConfirmed(countriesOfcontinents, covidCountries);
       }
     });
-    // const options = [...select.children];
-    // select.addEventListener("change", function () {
-    //   if (select.value === options[1].value) {
-    //     console.log(options[1].value);
-    //   }
-    // });
+
+    select.addEventListener("change", function () {
+      const currentCountry = this.value;
+      const currentCountryObj = covidCountries.data.find((country) => {
+        if (country.name === currentCountry) {
+          return country;
+        }
+      });
+      dataBox.textContent = "";
+      const title = document.createElement("h3");
+      title.classList.add("h3Style");
+      const confirmDiv = document.createElement("p");
+      confirmDiv.classList.add("pStyle");
+      const confirmNum = document.createElement("p");
+      confirmNum.classList.add("pStyle");
+      dataBox.append(title, confirmDiv, confirmNum);
+
+      title.textContent = currentCountry;
+
+      confirmDiv.textContent = "Total Cases";
+      let sum = currentCountryObj.latest_data.confirmed;
+      function numberWithCommas(sum) {
+        return sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+      confirmNum.textContent = numberWithCommas(sum);
+
+      console.log(currentCountryObj.latest_data.confirmed);
+      console.log(currentCountryObj.latest_data.recovered);
+      console.log(currentCountryObj.latest_data.deaths);
+      console.log(currentCountryObj.latest_data.critical);
+      console.log(currentCountryObj.today.deaths);
+      console.log(currentCountryObj.today.confirmed);
+    });
 
     casesStatistics.addEventListener("click", function (e) {
       const name = e.target.name;
@@ -91,6 +122,7 @@ function sortCountries(arr) {
   return arr;
 }
 
+//a functions that adds options to select bar depend on the continent you select
 function createOptions(arr) {
   const option1 = document.createElement("option");
   select.appendChild(option1);
@@ -103,13 +135,7 @@ function createOptions(arr) {
   });
 }
 
-function getConfirmCases(arr) {
-  const confirmed = [];
-
-  return confirmed;
-}
-
-//functions for all statuses
+//functions for all 4 statuses of continents and world
 //confirmed
 function setContinentsButtonsConfirmed(worldOrContinentsCountries, covidCountries) {
   const dataYfiltered = covidCountries.data.filter((country) => {
@@ -127,6 +153,8 @@ function setContinentsButtonsConfirmed(worldOrContinentsCountries, covidCountrie
   });
   drawChart(dataX, covidCase, dataConfirmedY);
   createOptions(dataX);
+  let status = "Total Confirmed Cases";
+  drawDataBoxButtons(status, dataConfirmedY);
 }
 
 //recovered
@@ -146,6 +174,8 @@ function setContinentsButtonsRecovered(worldOrContinentsCountries, covidCountrie
   });
   drawChart(dataX, covidCase, dataRecoveredY);
   createOptions(dataX);
+  let status = "Total Recovered Cases";
+  drawDataBoxButtons(status, dataRecoveredY);
 }
 
 //critical
@@ -165,6 +195,8 @@ function setContinentsButtonsCritical(worldOrContinentsCountries, covidCountries
   });
   drawChart(dataX, covidCase, dataCriticalY);
   createOptions(dataX);
+  let status = "Total Critical Cases";
+  drawDataBoxButtons(status, dataCriticalY);
 }
 
 //deaths
@@ -184,6 +216,8 @@ function setContinentsButtonsDeaths(worldOrContinentsCountries, covidCountries) 
   });
   drawChart(dataX, covidCase, dataDeathsY);
   createOptions(dataX);
+  let status = "Total Deaths Cases";
+  drawDataBoxButtons(status, dataDeathsY);
 }
 
 function resetActivation(btnContainer, name) {
@@ -200,12 +234,43 @@ function setStateBtn(continentsObj, worldOrContinentBtn, covidCountries, setCont
   for (let key in continentsObj) {
     allWorldCountries.push(...continentsObj[key]);
   }
-  if (worldOrContinentBtn.getAttribute("name") === "World") {
+  const currentBtnName = worldOrContinentBtn.getAttribute("name");
+  if (currentBtnName === "World") {
     setContinentsButtonStatus(allWorldCountries, covidCountries);
-  } else if (worldOrContinentBtn.getAttribute("name") != null) {
+  } else if (currentBtnName != null) {
     //if the clicked element is not the container itself
     const countriesOfcontinents = continentsObj[worldOrContinentBtn.getAttribute("name")];
 
     setContinentsButtonStatus(countriesOfcontinents, covidCountries);
   }
+}
+//first call with "World"
+function drawDataBoxButtons(status, dataStatusY) {
+  const continentBtns = [...contriesBtns.children];
+  const worldOrContinentBtn = continentBtns.find((btn) => {
+    if (btn.getAttribute("data-isActive") === "true") {
+      return btn;
+    }
+  });
+  const currentBtnName = worldOrContinentBtn.getAttribute("name");
+  //to insert to statebtn
+  dataBox.textContent = "";
+  const titleName = document.createElement("h2");
+  dataBox.appendChild(titleName);
+  titleName.textContent = currentBtnName;
+  const titleTotal = document.createElement("h3");
+  dataBox.appendChild(titleTotal);
+  titleTotal.textContent = status;
+  const totalNumber = document.createElement("p");
+  dataBox.appendChild(totalNumber);
+  const sum = dataStatusY.reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+  function numberWithCommas(sum) {
+    return sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  const sumStr = numberWithCommas(sum);
+  totalNumber.textContent = sumStr;
+}
+
+function drawDataBoxOptions() {
+  dataBox;
 }
