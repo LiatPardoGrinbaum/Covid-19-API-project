@@ -6,7 +6,7 @@ const casesStatistics = document.querySelector(".worldStatistics");
 const select = document.querySelector(".select");
 const ctx = document.getElementById("myChart");
 
-async function countriesStatus() {
+async function mainButtonsFuncionality() {
   try {
     const covidCountries = await getCovidCountriesData(); //array of all countries!
     const continentsObj = await getObjectOfContinents(getWorldData); //object of continents
@@ -73,7 +73,7 @@ async function countriesStatus() {
 // console.log(covidCountries.data[0].latest_data.critical);
 // console.log(covidCountries.data[0].latest_data.deaths);
 
-countriesStatus();
+mainButtonsFuncionality();
 
 drawChart([1, 2, 3], "hello", [1, 2, 4]);
 

@@ -4,11 +4,12 @@ body {
   box-sizing: border-box;
   background: rgb(140, 188, 188);
   height: 100vh;
+  font-family: "Spectral", serif;
 }
 
 h1 {
   color: rgb(22, 75, 75);
-  margin: 50px;
+  margin: 30px;
   font-size: 40px;
 }
 
@@ -27,6 +28,15 @@ h1 {
   text-align: center;
 }
 
+.top img {
+  height: 70px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
 .continent-container,
 .worldStatistics {
   width: 100%;
@@ -36,28 +46,32 @@ h1 {
   text-align: center;
 }
 
-.btn1 {
+.btn {
   border: none;
-  width: 80px;
+  width: 85px;
   height: 35px;
   padding: 5px;
-  background: rgb(30, 89, 179);
-  background: rgb(116, 140, 140);
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
+  font-family: "Quattrocento Sans", sans-serif;
+  /* font-family: "Spectral", serif; */
+}
+
+.btn1 {
+  background: rgb(116, 140, 140);
 }
 
 .btn2 {
-  border: none;
-  width: 120px;
-  height: 35px;
-  padding: 5px;
-  background: rgb(213, 137, 128);
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
+  background: rgb(205, 133, 125);
 }
+
+/* .btn1:hover {
+  background: rgb(79, 165, 165);
+}
+.btn2:hover {
+  background: rgb(189, 102, 92);
+} */
 
 #select-box {
   width: 100%;
@@ -73,6 +87,7 @@ select {
   font-size: 16px;
   border-radius: 5px;
   color: rgb(76, 71, 71);
+  font-family: "Spectral", serif;
 }
 
 .chart {
@@ -85,7 +100,7 @@ select {
 }
 
 [data-isActive="true"] {
-  background: rgb(53, 106, 106);
+  background: rgb(181, 46, 46);
 }
 
 /* [data-isActive2="true"] {
