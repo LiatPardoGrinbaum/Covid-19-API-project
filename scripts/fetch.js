@@ -43,7 +43,7 @@ async function getContinentsObj(continentsArray) {
     );
     for (let i = 0; i < countriesInContinents.length; i++) {
       for (let j = 0; j < countriesInContinents[i].length; j++) {
-        countriesInContinents[i][j] = countriesInContinents[i][j].name.common;
+        countriesInContinents[i][j] = countriesInContinents[i][j].cca2;
       }
     }
     continentsArray.forEach((continent, i) => {

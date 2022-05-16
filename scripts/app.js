@@ -13,12 +13,6 @@ async function mainButtonsFuncionality() {
   try {
     const covidCountries = await getCovidCountriesData(); //array of all countries!
     const continentsObj = await getObjectOfContinents(getWorldData); //object of continents
-    //fix for countries from covid API that arent shown in continents API:
-    continentsObj["Asia"].push("Brunei ", "Korea, Democratic People's Republic of", "S. Korea", "Macao");
-    continentsObj["Europe"].push("UK", "Czechia", "North Macedonia");
-    continentsObj["Americas"].push("USA", "Bonaire, Sint Eustatius and Saba", "U.S. Virgin Islands", "Saint Vincent Grenadines", "Saint Barth", "Saint Pierre Miquelon", "Turks and Caicos");
-    continentsObj["Africa"].push("CAR", "Congo", "DRC", "Sao Tome and Principe");
-    continentsObj["Oceania"].push("Micronesia, Federated States of", "Pitcairn");
 
     spinner.style.display = "none";
     chart.style.backgroundColor = " rgba(191, 242, 247, 0.5)";
@@ -129,7 +123,7 @@ function createOptions(arr) {
 //confirmed
 function setContinentsButtonsConfirmed(worldOrContinentsCountries, covidCountries) {
   const dataYfiltered = covidCountries.data.filter((country) => {
-    if (worldOrContinentsCountries.includes(country.name)) {
+    if (worldOrContinentsCountries.includes(country.code)) {
       return country;
     }
   });
@@ -151,7 +145,7 @@ function setContinentsButtonsConfirmed(worldOrContinentsCountries, covidCountrie
 //recovered
 function setContinentsButtonsRecovered(worldOrContinentsCountries, covidCountries) {
   const dataYfiltered = covidCountries.data.filter((country) => {
-    if (worldOrContinentsCountries.includes(country.name)) {
+    if (worldOrContinentsCountries.includes(country.code)) {
       return country;
     }
   });
@@ -172,7 +166,7 @@ function setContinentsButtonsRecovered(worldOrContinentsCountries, covidCountrie
 //critical
 function setContinentsButtonsCritical(worldOrContinentsCountries, covidCountries) {
   const dataYfiltered = covidCountries.data.filter((country) => {
-    if (worldOrContinentsCountries.includes(country.name)) {
+    if (worldOrContinentsCountries.includes(country.code)) {
       return country;
     }
   });
@@ -193,7 +187,7 @@ function setContinentsButtonsCritical(worldOrContinentsCountries, covidCountries
 //deaths
 function setContinentsButtonsDeaths(worldOrContinentsCountries, covidCountries) {
   const dataYfiltered = covidCountries.data.filter((country) => {
-    if (worldOrContinentsCountries.includes(country.name)) {
+    if (worldOrContinentsCountries.includes(country.code)) {
       return country;
     }
   });
