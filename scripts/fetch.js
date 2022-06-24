@@ -9,7 +9,7 @@ export async function getCovidCountriesData() {
 
 export async function getWorldData() {
   try {
-    const continentsData = await fetchData("https://nameless-citadel-58066.herokuapp.com/https://restcountries.herokuapp.com/api/v1");
+    const continentsData = await fetchData("https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1");
     // console.log(continentsData);
     return continentsData;
   } catch (e) {
@@ -38,7 +38,7 @@ async function getContinentsObj(continentsArray) {
     const continentsKeys = {};
     const countriesInContinents = await Promise.all(
       continentsArray.map(async function (continent) {
-        return await fetchData(`https://nameless-citadel-58066.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/${continent}`);
+        return await fetchData(`https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/${continent}`);
       })
     );
     for (let i = 0; i < countriesInContinents.length; i++) {
